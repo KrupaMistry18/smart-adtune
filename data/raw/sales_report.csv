@@ -1,0 +1,4 @@
+order-id,purchase-date,sku,asin,quantity,revenue
+A1001,2026-01-10,WM-001,B001,3,75
+A1002,2026-01-10,BH-002,B002,12,360
+A1003,2026-01-10,UC-003,B003,40,400

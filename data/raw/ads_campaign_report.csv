@@ -1,0 +1,5 @@
+campaignId,asin,dailyBudget,spend,attributedSales14d,acos,roas,cpc
+CAMP1,B001,50,45,50,90,1.1,1.8
+CAMP2,B002,80,70,220,32,3.2,1.2
+CAMP3,B003,40,30,350,24,4.1,0.6
+CAMP4,B004,60,55,45,110,0.9,2.5

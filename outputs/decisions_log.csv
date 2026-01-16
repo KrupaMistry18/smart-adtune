@@ -1,0 +1,5 @@
+asin,campaign_id,old_budget,new_budget,action,reason,roas,inventory
+B001,CAMP1,50,0.0,PAUSE,Low inventory risk,1.1,8
+B002,CAMP2,80,96.0,INCREASE,High ROAS with healthy inventory,3.2,45
+B003,CAMP3,40,48.0,INCREASE,High ROAS with healthy inventory,4.1,120
+B004,CAMP4,60,42.0,DECREASE,Low ROAS,0.9,15
