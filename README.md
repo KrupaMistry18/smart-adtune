@@ -27,42 +27,83 @@ Smart AdTune is a Python-based automation system that processes real Amazon Sell
 ## System Architecture
 
 
-Amazon Seller & Advertising Reports
-            ↓
-      Python Data Ingestion
-            ↓
-       Decision Engine
-            ↓
-     Budget Adjustments
-            ↓
-       Decision Logs
-            ↓
-     Streamlit Dashboard
+system_architecture:
+  data_sources:
+    - amazon_seller_central_reports
+    - amazon_advertising_reports
+
+  ingestion_layer:
+    language: python
+    responsibilities:
+      - read_csv_reports
+      - validate_schemas
+      - clean_and_normalize_data
+
+  decision_engine:
+    type: rule_based
+    inputs:
+      - inventory_levels
+      - roas
+      - sales_volume
+    actions:
+      - pause_campaign
+      - increase_budget
+      - decrease_budget
+      - no_change
+
+  automation:
+    scheduler: github_actions
+    frequency: daily
+
+  outputs:
+    decision_logs:
+      format: csv
+      location: outputs/decisions_log.csv
+
+  notifications:
+    type: email
+    trigger: pipeline_completion
+
+  visualization:
+    tool: streamlit
+    purpose: operational_dashboard
+
 
 ## Project Structure
-smart-adtune/
-├── data/
-│   └── raw/
-│       ├── inventory_report.csv
-│       ├── sales_report.csv
-│       └── ads_campaign_report.csv
-│
-├── src/
-│   ├── ingestion/
-│   ├── decision_engine.py
-│   ├── apply_decisions.py
-│   ├── dashboard.py
-│   └── main.py
-│
-├── outputs/
-│   └── decisions_log.csv
-│
-├── .github/
-│   └── workflows/
-│       └── daily_run.yml
-│
-├── requirements.txt
-└── README.md
+project_structure:
+  root:
+    - README.md
+    - requirements.txt
+
+  data:
+    raw:
+      - inventory_report.csv
+      - sales_report.csv
+      - ads_campaign_report.csv
+
+  src:
+    ingestion:
+      - inventory_loader.py
+      - sales_loader.py
+      - ads_loader.py
+    utils:
+      - validators.py
+    core:
+      - decision_engine.py
+      - apply_decisions.py
+    notifications:
+      - email_notifier.py
+    app:
+      - dashboard.py
+      - main.py
+
+  outputs:
+    - decisions_log.csv
+
+  automation:
+    github:
+      workflows:
+        - daily_run.yml
 
 ## Setup
 
